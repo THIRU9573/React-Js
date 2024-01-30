@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>React web</title>
+        <link rel="stylesheet" href="index.css">
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    </head>
+    <body>
+        
+        <div id="root"></div>
+        <script type="text/babel">
+            const Welcome = () => <h1 className = "message"> Hello, User </h1>
+            ReactDOM.render(<Welcome />, document.getElementById("root"));
+        </script>
+    
+    <!--accessing props-->
+    <div id="root1"></div>
+        <script type="text/babel">
+            const Welcom = (props) => {
+                const {name, greeting} = props
+                return (
+                    <h1 className= "message">{greeting},{name}</h1>
+                )
+            }
+            ReactDOM.render(
+                <Welcom name = "thirupathi" greeting= "hello" />, document.getElementById("root1")
+            );
+        </script>
+
+        <!--Reusable the components-->
+        <div id="root2"></div>
+        <script type="text/babel">
+            const Come = (props) => {
+                const {name, greeting} = props
+                return (
+                    <h1 className="message">{greeting},{name} </h1>
+                )
+            };
+            ReactDOM.render(
+                <div>
+                    <Come name="Varun" greeting="Hello" />
+                    <Come name="rudra" greeting="Hi" />
+                </div>,
+                document.getElementById("root2")
+            );
+        </script>
+        <!--Composable-->
+        <div id="root3"></div>
+        <script type="text/babel">
+            const Well = (props) => {
+                const {name, greeting} = props;
+                return (
+                    <h1 className="message">{greeting},{name} </h1>
+                );
+            };
+            const Greetings = () => {
+                return (
+                    <div>
+                        <Well name="Bunny" greeting="Hello" />
+                        <Well name="Boss" greeting="Hi" />
+                    </div>
+    
+                );
+            };
+            ReactDOM.render(<Greetings />,
+                document.getElementById("root3")
+            );
+        </script>
+
+    </body>
+</html>
